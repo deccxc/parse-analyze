@@ -6,7 +6,10 @@ LOCAL_FILE = 'local_copy.log'
 # Use urlretrieve() to fetch a remote copy and save into the local file path
 local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE);
 
+count = 0
 f = open('local_copy.log')
 lines = f.readlines()
 for line in lines:
+    count += 1
+    print("Total requests made in time period on log:", count)
     print(line.split()[3:4]);
