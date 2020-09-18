@@ -9,4 +9,4 @@ local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE);
 f = open('local_copy.log')
 lines = f.readlines()
 for line in lines:
-    print(line.split()[3]);
+    print(line.split()[3:4]);
