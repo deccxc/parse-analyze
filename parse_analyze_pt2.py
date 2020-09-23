@@ -10,7 +10,7 @@ year_count = 0
 # Use urlretrieve() to fetch a remote copy and save into the local file path
 local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE);
 #-------------------------------------------------------------------------------------------------
-#This portion of the code opens the log file and counts the total requests made in the time period and 1995
+#This portion of the code opens the log file and counts the requests made in each month
 FILE_NAME = 'path/to/file'
 
 oct_count = 0
