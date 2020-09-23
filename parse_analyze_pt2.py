@@ -18,81 +18,81 @@ f = open(LOCAL_FILE)
 for line in f:
   if 'Oct/1994' in line:
     oct_count += 1
-print(f'October count:', oct_count)
+print(f'October requests:', oct_count)
 
 nov_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Nov/1994' in line:
     nov_count += 1
-print(f'November count:', nov_count)
+print(f'November requests:', nov_count)
 
 dec_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Dec/1994' in line:
     dec_count += 1
-print(f'December count:', dec_count)
+print(f'December requests:', dec_count)
 
 jan_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Jan/1995' in line:
     jan_count += 1
-print(f'January count:', jan_count)
+print(f'January requests:', jan_count)
 
 feb_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Feb/1995' in line:
     feb_count += 1
-print(f'February count:', feb_count)
+print(f'February requests:', feb_count)
 
 mar_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Mar/1995' in line:
     mar_count += 1
-print(f'March count:', mar_count)
+print(f'March requests:', mar_count)
 
 apr_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Apr/1995' in line:
     apr_count += 1
-print(f'April count:', apr_count)
+print(f'April requests:', apr_count)
 
 may_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'May/1995' in line:
     may_count += 1
-print(f'May count:', may_count)
+print(f'May requests:', may_count)
 
 jun_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Jun/1995' in line:
     jun_count += 1
-print(f'June count:', jun_count)
+print(f'June requests:', jun_count)
 
 jul_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Jul/1995' in line:
     jul_count += 1
-print(f'July count:', jul_count)
+print(f'July requests:', jul_count)
 
 aug_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Aug/1995' in line:
     aug_count += 1
-print(f'August count:', aug_count)
+print(f'August requests:', aug_count)
 
 sep_count = 0
 f = open(LOCAL_FILE)
 for line in f:
   if 'Sep/1995' in line:
     sep_count += 1
-print(f'September count:', sep_count)
+print(f'September requests:', sep_count)
