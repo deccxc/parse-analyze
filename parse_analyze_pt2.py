@@ -116,3 +116,41 @@ Keymax = max(pages, key=pages.get)
 Keymin = min(pages, key=pages.get)
 print('Most requested file:', Keymax)
 print('Least requested file:', Keymin)
+
+unsuccessful_count = 0
+f = open(LOCAL_FILE)
+for line in f:
+  pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
+  if len(pieces) < 3:
+    continue
+  if pieces[3] == '400':
+    unsuccessful_count += 1
+    continue
+  if pieces[3] == '403':
+    unsuccessful_count += 1
+    continue
+  if pieces[3] == '404':
+    unsuccessful_count += 1
+unsuccessful = (unsuccessful_count/726736)*100
+formatted_unsuccessful = "{:.2f}".format(unsuccessful)
+
+print('Percent of requests unsuccessful:',formatted_unsuccessful,'%')
+
+redirected_count = 0
+f = open(LOCAL_FILE)
+for line in f:
+  pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
+  if len(pieces) < 3:
+    continue
+  if pieces[3] == '300':
+    redirected_count += 1
+    continue
+  if pieces[3] == '304':
+    redirected_count += 1
+    continue
+  if pieces[3] == '302':
+    redirected_count += 1
+redirected = (redirected_count/726736)*100
+formatted_redirected = "{:.2f}".format(redirected)
+
+print('Percent of requests redirected:',formatted_redirected,'%')
