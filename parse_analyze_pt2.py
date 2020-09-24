@@ -14,88 +14,73 @@ local_file, headers = urlretrieve(URL_PATH, LOCAL_FILE);
 FILE_NAME = 'path/to/file'
 
 oct_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Oct/1994' in line:
-    oct_count += 1
-print(f'October requests:', oct_count)
-
 nov_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Nov/1994' in line:
-    nov_count += 1
-print(f'November requests:', nov_count)
-
 dec_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Dec/1994' in line:
-    dec_count += 1
-print(f'December requests:', dec_count)
-
 jan_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Jan/1995' in line:
-    jan_count += 1
-print(f'January requests:', jan_count)
-
 feb_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Feb/1995' in line:
-    feb_count += 1
-print(f'February requests:', feb_count)
-
 mar_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Mar/1995' in line:
-    mar_count += 1
-print(f'March requests:', mar_count)
-
 apr_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Apr/1995' in line:
-    apr_count += 1
-print(f'April requests:', apr_count)
-
 may_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'May/1995' in line:
-    may_count += 1
-print(f'May requests:', may_count)
-
 jun_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Jun/1995' in line:
-    jun_count += 1
-print(f'June requests:', jun_count)
-
 jul_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Jul/1995' in line:
-    jul_count += 1
-print(f'July requests:', jul_count)
-
 aug_count = 0
-f = open(LOCAL_FILE)
-for line in f:
-  if 'Aug/1995' in line:
-    aug_count += 1
-print(f'August requests:', aug_count)
-
 sep_count = 0
+oct95_count = 0
+
 f = open(LOCAL_FILE)
 for line in f:
-  if 'Sep/1995' in line:
-    sep_count += 1
-print(f'September requests:', sep_count)
+    if 'Oct/1994' in line:
+        oct_count += 1
+
+    elif 'Nov/1994' in line:
+        nov_count += 1
+
+    elif 'Dec/1994' in line:
+        dec_count += 1
+
+    elif 'Jan/1995' in line:
+        jan_count += 1
+
+    elif 'Feb/1995' in line:
+        feb_count += 1
+
+    elif 'Mar/1995' in line:
+        mar_count += 1
+
+    elif 'Apr/1995' in line:
+        apr_count += 1
+
+    elif 'May/1995' in line:
+        may_count += 1
+
+    elif 'Jun/1995' in line:
+        jun_count += 1
+
+    elif 'Jul/1995' in line:
+        jul_count += 1
+
+    elif 'Aug/1995' in line:
+        aug_count += 1
+
+    elif 'Sep/1995' in line:
+        sep_count += 1
+
+    else:
+        oct95_count += 1
+
+print(f'October 1994 requests:', oct_count)
+print(f'November 1994 requests:', nov_count)
+print(f'December 1994 requests:', dec_count)
+print(f'January 1995 requests:', jan_count)
+print(f'February 1995 requests:', feb_count)
+print(f'March 1995 requests:', mar_count)
+print(f'April 1995 requests:', apr_count)
+print(f'May 1995 requests:', may_count)
+print(f'June 1995 requests:', jun_count)
+print(f'July 1995 requests:', jul_count)
+print(f'August 1995 requests:', aug_count)
+print(f'September 1995 requests:', sep_count)
+print(f'October 1995 requests:', oct95_count)
 
 pages = {}
 
