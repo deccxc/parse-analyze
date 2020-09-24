@@ -96,3 +96,23 @@ for line in f:
   if 'Sep/1995' in line:
     sep_count += 1
 print(f'September requests:', sep_count)
+
+pages = {}
+
+f = open(LOCAL_FILE)
+
+for line in f:
+  pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
+  if len(pieces) < 4:
+    continue
+
+  filename = pieces[2]
+
+  if filename in pages:
+    pages[filename] += 1
+  else:
+    pages[filename] = 1
+Keymax = max(pages, key=pages.get)
+Keymin = min(pages, key=pages.get)
+print('Most requested file:', Keymax)
+print('Least requested file:', Keymin)
