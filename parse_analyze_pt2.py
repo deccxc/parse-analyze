@@ -102,12 +102,45 @@ print()
 pages = {}
 
 f = open(LOCAL_FILE)
+mon = 0
+tue = 0
+wed = 0
+thur = 0
+fri = 0
+sat = 0
+sun = 0
 
 for line in f:
   pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
   if len(pieces) < 4:
     continue
+  date_time = re.split('.*\[([^:])', pieces[1])
+  dt = datetime.datetime.strptime(date_time, '%Y %b %d')
+  weekday = datetime.datetime.weekday(dt)
+
+
+  if weekday == 0:
+    mon += 1
   
+  elif weekday == 1:
+    tue += 1
+  
+  elif weekday == 2:
+    wed += 1
+  
+  elif weekday == 3:
+    thur += 1
+
+  elif weekday == 4:
+    fri += 1
+
+  elif weekday == 5:
+    sat += 1
+
+  elif weekday == 6:
+    sun += 1
+  
+
   filename = pieces[2]
   
   if 'Jan' in line:
