@@ -1,6 +1,7 @@
 #This portion of the code retrieves the log file from a network and saves a cached copy
 from urllib.request import urlretrieve
 import re
+import datetime
 
 URL_PATH = 'https://s3.amazonaws.com/tcmg476/http_access_log'
 LOCAL_FILE = 'local_copy.log'
@@ -26,6 +27,19 @@ jul_count = 0
 aug_count = 0
 sep_count = 0
 oct95_count = 0
+jan_match = 0
+feb_match = 0
+mar_match = 0
+apr_match = 0
+may_match = 0
+jun_match = 0
+jul_match = 0
+aug_match = 0
+sep_match = 0
+oct_match = 0
+oct95_match = 0
+nov_match = 0
+dec_match = 0
 
 f = open(LOCAL_FILE)
 for line in f:
@@ -90,8 +104,35 @@ for line in f:
   pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
   if len(pieces) < 4:
     continue
-
+  
   filename = pieces[2]
+  
+  if 'Jan' in line:
+      jan_match += 1
+  if 'Feb' in line:
+      feb_match += 1
+  if 'Mar' in line:
+      mar_match += 1
+  if 'Apr' in line:
+      apr_match += 1
+  if 'May' in line:
+      may_match += 1
+  if 'Jun' in line:
+      jun_match += 1
+  if 'Jul' in line:
+      jul_match += 1
+  if 'Aug' in line:
+      aug_match += 1
+  if 'Sep' in line:
+      sep_match += 1
+  if 'Oct/1994' in line:
+      oct_match += 1
+  if 'Oct/1995' in line:
+      oct95_match += 1
+  if 'Nov' in line:
+      nov_match += 1
+  if 'Dec' in line:
+      dec_match += 1
 
   if filename in pages:
     pages[filename] += 1
@@ -101,6 +142,19 @@ Keymax = max(pages, key=pages.get)
 Keymin = min(pages, key=pages.get)
 print('Most requested file:', Keymax)
 print('Least requested file:', Keymin)
+print(f'The number of requests made in January 1995 was:', jan_match)
+print(f'The number of requests made in February 1995 was: {feb_match}')
+print(f'The number of requests made in March 1995 was: {mar_match}')
+print(f'The number of requests made in April 1995 was: {apr_match}')
+print(f'The number of requests made in May 1995 was: {may_match}')
+print(f'The number of requests made in June 1995 was: {jun_match}')
+print(f'The number of requests made in July 1995 was: {jul_match}')
+print(f'The number of requests made in August 1995 was: {aug_match}')
+print(f'The number of requests made in September 1995 was: {sep_match}')
+print(f'The number of requests made in October 1994 was: {oct_match}')
+print(f'The number of requests made in October 1995 was: {oct_match}')
+print(f'The number of requests made in November 1994 was: {nov_match}')
+print(f'The number of requests made in December 1994 was: {dec_match}')
 
 unsuccessful_count = 0
 f = open(LOCAL_FILE)
