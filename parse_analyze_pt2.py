@@ -41,7 +41,6 @@ oct95_match = 0
 nov_match = 0
 dec_match = 0
 
-
 f = open(LOCAL_FILE)
 for line in f:
     if 'Oct/1994' in line:
@@ -96,18 +95,50 @@ print(f'July 1995 requests:', jul_count)
 print(f'August 1995 requests:', aug_count)
 print(f'September 1995 requests:', sep_count)
 print(f'October 1995 requests:', oct95_count)
-print()
-print()
 
 pages = {}
 
 f = open(LOCAL_FILE)
+mon = 0
+tue = 0
+wed = 0
+thur = 0
+fri = 0
+sat = 0
+sun = 0
+
+
 
 for line in f:
   pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
   if len(pieces) < 4:
     continue
+  date_time = re.split('.*\[([^:])', pieces[1])
+  dt = datetime.datetime.strptime(date_time, '%Y %b %d')
+  weekday = datetime.datetime.weekday(dt)
+
+  if weekday == 0:
+    mon += 1
   
+  elif weekday == 1:
+    tue += 1
+  
+  elif weekday == 2:
+    wed += 1
+  
+  elif weekday == 3:
+    thur += 1
+
+  elif weekday == 4:
+    fri += 1
+
+  elif weekday == 5:
+    sat += 1
+
+  elif weekday == 6:
+    sun += 1
+
+
   filename = pieces[2]
   
   if 'Jan' in line:
@@ -145,9 +176,6 @@ Keymax = max(pages, key=pages.get)
 Keymin = min(pages, key=pages.get)
 print('Most requested file:', Keymax)
 print('Least requested file:', Keymin)
-print()
-print()
-
 print(f'The number of requests made in January 1995 was:', jan_match)
 print(f'The number of requests made in February 1995 was: {feb_match}')
 print(f'The number of requests made in March 1995 was: {mar_match}')
@@ -161,8 +189,6 @@ print(f'The number of requests made in October 1994 was: {oct_match}')
 print(f'The number of requests made in October 1995 was: {oct_match}')
 print(f'The number of requests made in November 1994 was: {nov_match}')
 print(f'The number of requests made in December 1994 was: {dec_match}')
-print()
-print()
 
 unsuccessful_count = 0
 f = open(LOCAL_FILE)
