@@ -110,13 +110,16 @@ fri = 0
 sat = 0
 sun = 0
 
+f = open(LOCAL_FILE)
 for line in f:
   pieces = re.split('.+ \[(.+) .+\] "[A-Z]{3,4} (.+) HTTP/1.0" ([0-9]{3})', line)
   if len(pieces) < 4:
     continue
-  date_time = re.split('.*\[([^:])', pieces[1])
-  dt = datetime.datetime.strptime(date_time, '%Y %b %d')
-  weekday = datetime.datetime.weekday(dt)
+  date = pieces[1].split(':')
+  date = date[0]
+  days = datetime.datetime.strptime(date, '%d/%b/%Y')
+
+  weekday = datetime.datetime.weekday(days)
 
 
   if weekday == 0:
@@ -139,9 +142,7 @@ for line in f:
 
   elif weekday == 6:
     sun += 1
-  
 
-  filename = pieces[2]
   
   if 'Jan' in line:
       jan_match += 1
@@ -170,14 +171,36 @@ for line in f:
   if 'Dec' in line:
       dec_match += 1
 
+  filename = pieces[2]
+
   if filename in pages:
     pages[filename] += 1
   else:
     pages[filename] = 1
-Keymax = max(pages, key=pages.get)
-Keymin = min(pages, key=pages.get)
-print('Most requested file:', Keymax)
-print('Least requested file:', Keymin)
+
+average_mon = mon / 52
+average_tue = tue / 52
+average_wed = wed / 52
+average_thur = thur / 52
+average_fri = fri / 52
+average_sat = sat / 52
+average_sun = sun / 52
+
+formatted_mon = "{:.2f}".format(average_mon)
+formatted_tue = "{:.2f}".format(average_tue)
+formatted_wed= "{:.2f}".format(average_wed)
+formatted_thur = "{:.2f}".format(average_thur)
+formatted_fri = "{:.2f}".format(average_fri)
+formatted_sat = "{:.2f}".format(average_sat)
+formatted_sun = "{:.2f}".format(average_sun)
+
+print(f'The average number of requests on Monday was {formatted_mon}')
+print(f'The average number of requests on Tuesday was {formatted_tue}')
+print(f'The average number of requests on Wednesday was {formatted_wed}')
+print(f'The average number of requests on Thursday was {formatted_thur}')
+print(f'The average number of requests on Friday was {formatted_fri}')
+print(f'The average number of requests on Saturday was {formatted_sat}')
+print(f'The average number of requests on Sunday was {formatted_sun}')
 print()
 print()
 
@@ -194,6 +217,13 @@ print(f'The number of requests made in October 1994 was: {oct_match}')
 print(f'The number of requests made in October 1995 was: {oct_match}')
 print(f'The number of requests made in November 1994 was: {nov_match}')
 print(f'The number of requests made in December 1994 was: {dec_match}')
+print()
+print()
+
+Keymax = max(pages, key=pages.get)
+Keymin = min(pages, key=pages.get)
+print('Most requested file:', Keymax)
+print('Least requested file:', Keymin)
 print()
 print()
 
